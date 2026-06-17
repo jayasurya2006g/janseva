@@ -1,0 +1,139 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:   #0D1B2A;
+  --navy2:  #152438;
+  --cream:  #F5F0E8;
+  --cream2: #EDE7DA;
+  --red:    #C0392B;
+  --gold:   #B8860B;
+  --gold-lt:#D4A017;
+  --slate:  #4A5568;
+  --slate2: #718096;
+  --white:  #FFFFFF;
+  --green:  #1A7F4B;
+  --orange: #D97706;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --radius: 4px;
+  --shadow: 0 2px 12px rgba(13,27,42,0.10);
+  --shadow-lg: 0 8px 32px rgba(13,27,42,0.15);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--navy);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+
+button { font-family: var(--font-body); cursor: pointer; border: none; }
+
+input, textarea, select {
+  font-family: var(--font-body);
+  outline: none;
+  border: 1.5px solid #D0C8BC;
+  background: var(--white);
+  color: var(--navy);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--navy);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream2); }
+::-webkit-scrollbar-thumb { background: var(--slate2); border-radius: 3px; }
+
+/* Stamp badge used on cards */
+.stamp {
+  position: absolute;
+  top: 16px; right: -10px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 14px;
+  clip-path: polygon(0 0, 100% 0, 90% 50%, 100% 100%, 0 100%);
+  white-space: nowrap;
+}
+.stamp.green  { background: var(--green); }
+.stamp.gold   { background: var(--gold); }
+.stamp.slate  { background: var(--slate); }
+.stamp.orange { background: var(--orange); }
+
+/* Status pill */
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.pill.pending  { background: #FEF3C7; color: #92400E; }
+.pill.active   { background: #DBEAFE; color: #1E40AF; }
+.pill.resolved { background: #D1FAE5; color: #065F46; }
+.pill.rejected { background: #FEE2E2; color: #991B1B; }
+.pill.closed   { background: #F3F4F6; color: #4B5563; }
+
+/* Btn variants */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 24px; border-radius: var(--radius);
+  font-size: 14px; font-weight: 600; letter-spacing: 0.03em;
+  transition: all 0.18s; cursor: pointer; border: none;
+}
+.btn-primary   { background: var(--navy); color: var(--white); }
+.btn-primary:hover { background: var(--navy2); transform: translateY(-1px); box-shadow: var(--shadow); }
+.btn-red       { background: var(--red); color: var(--white); }
+.btn-red:hover { opacity: 0.88; }
+.btn-outline   { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
+.btn-outline:hover { background: var(--navy); color: var(--white); }
+.btn-gold      { background: var(--gold); color: var(--white); }
+.btn-gold:hover { background: var(--gold-lt); }
+
+/* Form group */
+.fg { display: flex; flex-direction: column; gap: 6px; }
+.fg label { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--slate); }
+.fg .err { font-size: 12px; color: var(--red); margin-top: 2px; }
+
+/* Card */
+.card {
+  background: var(--white);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Section heading */
+.sec-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 8px;
+}
+.sec-title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}

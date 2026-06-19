@@ -123,6 +123,10 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     "https://jansev.onrender.com",
 ]
+CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = [
+    "https://jansev.onrender.com",
+]
 ALLOWED_HOSTS = config(
     'ALLOWED_HOSTS',
     default='localhost,127.0.0.1,cspmu.onrender.com'

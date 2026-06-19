@@ -28,8 +28,12 @@ export default function RegisterPage() {
       // Auto-login after registration
       await login(form.email, form.password)
       navigate('/home')
-    } catch (err) {
-      setError('Registration failed. Email or username may already be taken.')
+    } const data = await res.json()
+
+if (!res.ok) {
+  setError(JSON.stringify(data))
+  return
+}
     } finally { setLoading(false) }
   }
 

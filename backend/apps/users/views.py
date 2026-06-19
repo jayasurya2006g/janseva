@@ -27,6 +27,8 @@ class UserViewSet(viewsets.ViewSet):
 
     @action(detail=False, methods=['post'],permission_classes=[AllowAny])
     def register(self, request):
+        
+        print("REGISTER HIT", request.data)
         serializer = CitizenRegisterSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()

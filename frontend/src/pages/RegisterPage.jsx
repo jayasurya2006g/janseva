@@ -12,31 +12,49 @@ export default function RegisterPage() {
   const handle = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
 
   const submit = async e => {
-    e.preventDefault()
-    setError('')
-    if (form.password !== form.confirm) { setError('Passwords do not match.'); return }
-    if (form.password.length < 8)       { setError('Password must be at least 8 characters.'); return }
-    setLoading(true)
-    try {
-      const res = await fetch('https://cspmu.onrender.com/api/users/register/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: form.username, email: form.email, phone: form.phone, password: form.password }),
-      })
-      const data = await res.json()
-      if (!res.ok) throw new Error(JSON.stringify(data))
-      // Auto-login after registration
-      await login(form.email, form.password)
-      navigate('/home')
-    } const data = await res.json()
+  e.preventDefault()
+  setError('')
 
-if (!res.ok) {
-  setError(JSON.stringify(data))
-  return
-}
-    } finally { setLoading(false) }
+  if (form.password !== form.confirm) {
+    setError('Passwords do not match.')
+    return
   }
 
+  if (form.password.length < 8) {
+    setError('Password must be at least 8 characters.')
+    return
+  }
+
+  setLoading(true)
+
+  try {
+    const res = await fetch('https://cspmu.onrender.com/api/users/register/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: form.username,
+        email: form.email,
+        phone: form.phone,
+        password: form.password
+      })
+    })
+
+    const data = await res.json()
+
+    if (!res.ok) {
+      setError(JSON.stringify(data))
+      return
+    }
+
+    await login(form.email, form.password)
+    navigate('/home')
+
+  } catch (err) {
+    setError(err.message)
+  } finally {
+    setLoading(false)
+  }
+  }
   return (
     <div style={s.page}>
       <div style={s.left}>

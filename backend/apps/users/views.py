@@ -25,7 +25,7 @@ class UserViewSet(viewsets.ViewSet):
             return [AllowAny()]
         return [IsAuthenticated()]
 
-    @action(detail=False, methods=['post'])
+    @action(detail=False, methods=['post'],permission_classes=[AllowAny])
     def register(self, request):
         serializer = CitizenRegisterSerializer(data=request.data)
         if serializer.is_valid():
@@ -38,7 +38,7 @@ class UserViewSet(viewsets.ViewSet):
             }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    @action(detail=False, methods=['post'])
+    @action(detail=False, methods=['post'],permission_classes=[AllowAny])
     def login(self, request):
         email    = request.data.get('email', '').strip()
         password = request.data.get('password', '')

@@ -16,7 +16,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
+    # 'corsheaders',
 
     'rest_framework',
     'rest_framework_simplejwt',
@@ -120,6 +120,9 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS':  True,
     'BLACKLIST_AFTER_ROTATION': True,
 }
+CORS_ALLOWED_ORIGINS = [
+    "https://jansev.onrender.com",
+]
 ALLOWED_HOSTS = config(
     'ALLOWED_HOSTS',
     default='localhost,127.0.0.1,cspmu.onrender.com'

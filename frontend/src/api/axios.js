@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: 'http://localhost:8000/api' });
+const api = axios.create({ baseURL: 'https://cspmu.onrender.com/api' });
 
 api.interceptors.request.use(cfg => {
   const token = localStorage.getItem('access');
@@ -16,7 +16,7 @@ api.interceptors.response.use(
       orig._retry = true;
       try {
         const refresh = localStorage.getItem('refresh');
-        const { data } = await axios.post('http://localhost:8000/api/token/refresh/', { refresh });
+        const { data } = await axios.post('https://cspmu.onrender.com//api/token/refresh/', { refresh });
         localStorage.setItem('access', data.access);
         orig.headers.Authorization = `Bearer ${data.access}`;
         return api(orig);

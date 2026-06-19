@@ -18,7 +18,7 @@ export default function RegisterPage() {
     if (form.password.length < 8)       { setError('Password must be at least 8 characters.'); return }
     setLoading(true)
     try {
-      const res = await fetch('http://localhost:8000/api/users/register/', {
+      const res = await fetch('https://cspmu.onrender.com/api/users/register/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: form.username, email: form.email, phone: form.phone, password: form.password }),

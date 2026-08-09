@@ -34,6 +34,20 @@ npm run dev                        # runs on :5173
 ```
 
 Open http://localhost:5173
+i
+### Frontend (production build)
+
+Before building for production, set the frontend API base URL using a Vite env var `VITE_API_BASE_URL` (example: `https://api.example.com/api`). Then run:
+
+```bash
+cd frontend
+npm install
+npm run build
+# preview the production build locally
+npm run preview
+```
+
+The frontend reads `VITE_API_BASE_URL` at build time. If not set, it falls back to `http://localhost:8000/api`.
 
 ## Roles
 

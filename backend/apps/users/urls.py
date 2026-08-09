@@ -3,9 +3,9 @@ from rest_framework.routers import DefaultRouter
 from .views import UserViewSet, AdminViewSet
 
 router = DefaultRouter()
-router.register('users', UserViewSet, basename='users')
-router.register('admin', AdminViewSet, basename='admin')
+router.register("users", UserViewSet, basename="users")
+router.register("admin", AdminViewSet, basename="admin")
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("", include(router.urls)),
 ]

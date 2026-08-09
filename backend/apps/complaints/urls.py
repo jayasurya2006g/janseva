@@ -3,8 +3,8 @@ from rest_framework.routers import DefaultRouter
 from .views import ComplaintViewSet
 
 router = DefaultRouter()
-router.register('complaints', ComplaintViewSet, basename='complaints')
+router.register("complaints", ComplaintViewSet, basename="complaints")
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("", include(router.urls)),
 ]

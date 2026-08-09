@@ -36,4 +36,5 @@ jobs:
         run: python backend/manage.py check
 
       - name: Run tests
-        run: python backend/manage.py test
+        working-directory: backend
+        run: python manage.py test
